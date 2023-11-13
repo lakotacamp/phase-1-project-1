@@ -1,0 +1,2 @@
+# Any changes to the local db. Will make sure that the db is clean for every branch
+db.json
