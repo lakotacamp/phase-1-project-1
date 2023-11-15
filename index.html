@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Origin Tool</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 <div id="wizard-list">
@@ -19,42 +20,101 @@
     <form id="variant-form">
         <input type="text" id="form-race" placeholder="Which Race"></input>
         <br>
+
         <h5>+2 to:</h5>
         <select id="primary-ability">
-
-            <option value="str" name="str">Strength</option>
-            <option value="char" name="char">Charisma</option>
-            <option value="int" name="int">Intelligence</option>
-            <option value="wis" name="wis">Wisdom</option>
-            <option value="dex" name="dex">Dexterity</option>
-            <option value="con" name="con">Constitution</option>
+            <option default disabled selected value> -- select an option -- </option>
+            <option value="str" name="str">STR</option>
+            <option value="cha" name="cha">CHA</option>
+            <option value="int" name="int">INT</option>
+            <option value="wis" name="wis">WIS</option>
+            <option value="dex" name="dex">DEX</option>
+            <option value="con" name="con">CON</option>
 
 
         </select>
         <br>
-        <h5>(if applicable) +1 to:</h5>
+        <div id="optional-ability" hidden="true">
+        <h5>+1 to:</h5>
         <select id="secondary-ability">
+            
+            <option default disabled selected value> -- select an option -- </option>
+            <option value="str" name="str">STR</option>
+            <option value="cha" name="cha">CHA</option>
+            <option value="int" name="int">INT</option>
+            <option value="wis" name="wis">WIS</option>
+            <option value="dex" name="dex">DEX</option>
+            <option value="con" name="con">CON</option>
 
-            <option value="str" name="str">Strength</option>
-            <option value="char" name="char">Charisma</option>
-            <option value="int" name="int">Intelligence</option>
-            <option value="wis" name="wis">Wisdom</option>
-            <option value="dex" name="dex">Dexterity</option>
-            <option value="con" name="con">Constitution</option>
 
+        </select>
+         </div>
+        <br>
+        <div id="half-elf-ability" hidden="true">
+            <h5>+1 to:</h5>
+            <select id="tertiary-ability">
+                
+                <option default disabled selected value> -- select an option -- </option>
+                <option value="str" name="str">STR</option>
+                <option value="cha" name="cha">CHA</option>
+                <option value="int" name="int">INT</option>
+                <option value="wis" name="wis">WIS</option>
+                <option value="dex" name="dex">DEX</option>
+                <option value="con" name="con">CON</option>
+    
+    
+            </select>
+             </div>
+            <br>
 
         </select>
         <br>
-        <h5>(if applicable) -1 to:</h5>
-        <select id="ability-penalty">
-
-        </select>
+        <h5>Languages</h5>
+        <table id="languages">
+        </table>
         <br>
-        <h5>Languges</h5>
-        <input type="text" id="languages" placeholder="A number of languages equal to your race's default">
-        <br>
+        <div id="optional-profs" hidden="true">
         <h5>Proficiencies</h5>
-        <input type="text" id="proficiencies" placeholder="Consult the proficiencies chart or wait for this app to update">
+        <table id ="prof-swaps">
+            <tr>
+                <th>
+                    Proficiency
+                </th>
+                <th>
+                    Replacement Proficiency
+                </th>
+            </tr>
+            <tr>
+                <td>Skill</td>
+                <td>Skill</td>
+            </tr>
+            <tr>
+                <td>Armor</td>
+                <td>Simple/Martial Weapon or Tool</td>
+            </tr>
+            <tr>
+                <td>Simple Weapon</td>
+                <td>Simple Weapon or Tool</td>
+            </tr>
+            <tr>
+                <td>Tool</td>
+                <td>Tool or Simple Weapon</td>
+            </tr>
+            <tr>
+                <td>Martial Weapon</td>
+                <td>Simple/Martial Weapon or Tool</td>
+            </tr>
+        </table>
+        <div>
+            <table id="selectable-profs">
+                <tr>
+                    <th>Default</th>
+                    <th>Replacement</th>
+                </tr>
+
+            </table>
+        </div>
+        </div>
         <br>
         <button type="submit">Save Origin</button>
         <button type="reset">Reset to Defaults</button>
