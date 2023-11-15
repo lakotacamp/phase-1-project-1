@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+const variantForm = document.getElementById("variant-form")
+variantForm.addEventListener("submit", (e)=>{
+        e.preventDefault()
+        addOrigin(e)
+        let newObject = {
+            ability_bonuses: e.target["#primary-ability"].value,
+            starting_proficiencies: e.target["#proficiencies"].value,
+            languages: e.target["#languages"].value
+        };
+        raceDetails(newObject);
+})
+
+let current
+
 //This is our Get Request from the API
 fetch("https://www.dnd5eapi.co/api/races")
 .then(r=>r.json())
@@ -29,113 +44,89 @@ function raceFiller(url){
 )}
 //Information: This function will present info on each race in the Menu Bar
 function raceDetails(raceInQuestion){
+    current = raceInQuestion
+    console.log(current)
+    const raceName = document.querySelector("#form-race")
+    let primaryAbilityField = document.querySelector('#primary-ability');
+    let secondaryAbilityField = document.querySelector("#secondary-ability")
+    let proficiencies = document.querySelector('#proficiencies');
+    let languages = document.querySelector('#languages');
+    const optionalProfs = document.querySelector(`#optional-profs`)
+    const optionalAbility = document.querySelector(`#optional-ability`)
     let allProficiencies = ""
+    const primaryAbility = raceInQuestion.ability_bonuses[0].ability_score.index
+    // const secondaryAbility = raceInQuestion.ability_bonuses[1].ability_score.index
+
+    if(raceInQuestion.starting_proficiencies[0]){
     raceInQuestion.starting_proficiencies.forEach((proficiency)=>{
         allProficiencies = allProficiencies + " " + proficiency.index
-        //console.log(proficiency)
-    })
+        proficiencies.value = allProficiencies
+        console.log(proficiency)
+        optionalProfs.hidden = false
+    })} else {
+        optionalProfs.hidden = true
+    }
+
+    if(raceInQuestion.ability_bonuses[1]){
+        secondaryAbilityField.value = raceInQuestion.ability_bonuses[1].ability_score.index
+        secondaryAbilityField.options[`${raceInQuestion.ability_bonuses[1].ability_score.index}`].innerText = raceInQuestion.ability_bonuses[1].ability_score.index.toUpperCase()
+        optionalAbility.hidden = false
+    } else {
+        optionalAbility.hidden = true
+    }
+
     let allLanguages = ""
     raceInQuestion.languages.forEach((language)=>{
         allLanguages = allLanguages + " " + language.index
         //console.log(language)
     })
 
-    let abilityScore = document.querySelector('#primary-ability');
-    let proficiencies = document.querySelector('#proficiencies');
-    let languages = document.querySelector('#languages');
 
-    console.log(raceInQuestion)
 
-    const abilityScoreInput = raceInQuestion.ability_bonuses[0].ability_score.index
-    abilityScore.value = abilityScoreInput
-    abilityScore.options[`${abilityScoreInput}`].innerText = abilityScoreInput
-    proficiencies.value = allProficiencies
+    raceName.value = raceInQuestion.name
+
+    primaryAbilityField.value = primaryAbility
+    primaryAbilityField.options[`${primaryAbility}`].innerText = primaryAbility.toUpperCase()
     languages.value = allLanguages
 
 }
-//New Attribute Origins Form Function:
-let newOrigin = document.querySelector('#variant-form');
-newOrigin.addEventListener('submit',(e)=>{
-    e.preventDefault();
-let newObject = {
-    ability_bonuses: e.target["#primary-ability"].value,
-    starting_proficiencies: e.target["#proficiencies"].value,
-    languages: e.target["#languages"].value
-};
-raceDetails(newObject);
 })
 
-// //Reset Form Button
-// let deleteButton = document.createElement('button');
-// deleteButton.textContent = "DELETE"
-// deleteButton.id = "#delete-button"
-// document.querySelector('reset').append(deleteButton);
-// deleteButton.addEventListener('click',()=>{
-// let deleteValues = {
-//     ability_bonuses: "",
-//     starting_proficiencies: "",
-//     languages: ""
-// };
-})
-=======
-//code goes here
-const variantForm = document.getElementById("variant-form")
-variantForm.addEventListener("submit", (e)=>{
-    e.preventDefault()
-    addOrigin(e)
-})
-
-let current
 
 
-function initialize(){
-    fetch("http://localhost:3000/races/")
-    .then(r=>r.json())
-    .then((data)=>{
-        console.log(data)
-    })
-
-
-}
 
 function addOrigin(newOrigin){
 
+    console.log(newOrigin)
     const postObj = {
-        index: `${newOrigin.target[0].value}`,
+        index: `${newOrigin.target["form-race"].value}`,
         ability_bonuses : [
             {
                 ability_score: {
-                    index: `${newOrigin.target[1].value}`,
-                    name: `${newOrigin.target[1].value.slice(0,3).toUpperCase()}`,
+                    index: `${newOrigin.target["primary-ability"].value}`,
+                    name: `${newOrigin.target["primary-ability"].value.slice(0,3).toUpperCase()}`,
                 },
                 bonus : 2
             },
             {
                 ability_score: {
-                    index: `${newOrigin.target[2].value}`,
-                    name: `${newOrigin.target[2].value.slice(0,3).toUpperCase()}`,
+                    index: `${newOrigin.target["secondary-ability"].value}`,
+                    name: `${newOrigin.target["secondary-ability"].value.slice(0,3).toUpperCase()}`,
                 },
                 bonus : 1
-            },
-            {
-                ability_score: {
-                    index: `${newOrigin.target[3].value}`,
-                    name: `${newOrigin.target[3].value.slice(0,3).toUpperCase()}`,
-                },
-                bonus : -1
             }
         ],
         languages: [
             {
-                index: `${newOrigin.target[4].value}`,
-                name:  `${newOrigin.target[4].value.charAt(0).toUpperCase()}` + `${newOrigin.target[4].value.slice(1)}`,
+                index: `${newOrigin.target["languages"].value}`,
+                name:  `${newOrigin.target["languages"].value}`,
 
             }
         ],
         starting_proficiencies: [
             {
-                index: `${newOrigin.target[5].value}`,
-                name: `${newOrigin.target[5].value.charAt(0).toUpperCase()}` + `${newOrigin.target[5].value.slice(1)}`
+                index: `${newOrigin.target["proficiencies"].value}`,
+                name: `${newOrigin.target["proficiencies"].value}`
             }
 
         ]
@@ -197,5 +188,5 @@ function showConfirmation(message, color){
     }, 3500)
 }
 
-initialize()
+
 

@@ -125,40 +125,33 @@
       "url": "/api/races/dwarf"
     },
     {
-      "index": "Bruh",
+      "index": "Tiefling",
       "ability_bonuses": [
         {
           "ability_score": {
-            "index": "strength",
-            "name": "STR"
+            "index": "int",
+            "name": "INT"
           },
           "bonus": 2
         },
         {
           "ability_score": {
-            "index": "strength",
-            "name": "STR"
+            "index": "cha",
+            "name": "CHA"
           },
           "bonus": 1
-        },
-        {
-          "ability_score": {
-            "index": "strength",
-            "name": "STR"
-          },
-          "bonus": -1
         }
       ],
       "languages": [
         {
-          "index": "Celestial",
-          "name": "Celestial"
+          "index": " common infernal",
+          "name": " common infernal"
         }
       ],
       "starting_proficiencies": [
         {
-          "index": "simple weapons",
-          "name": "Simple weapons"
+          "index": "",
+          "name": ""
         }
       ],
       "id": 2
