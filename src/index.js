@@ -51,6 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+})
+//code goes here
+const variantForm = document.getElementById("variant-form")
+variantForm.addEventListener("submit", (e)=>{
+    e.preventDefault()
+    addOrigin(e)
+})
+
         fetch(`https://www.dnd5eapi.co${url}`)
             .then(r => r.json())
             .then(raceData => {
