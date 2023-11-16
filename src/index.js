@@ -65,15 +65,4 @@ let newObject = {
 raceDetails(newObject);
 })
 
-// //Reset Form Button
-// let deleteButton = document.createElement('button');
-// deleteButton.textContent = "DELETE"
-// deleteButton.id = "#delete-button"
-// document.querySelector('reset').append(deleteButton);
-// deleteButton.addEventListener('click',()=>{
-// let deleteValues = {
-//     ability_bonuses: "",
-//     starting_proficiencies: "",
-//     languages: ""
-// };
 })

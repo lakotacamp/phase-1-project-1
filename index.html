@@ -5,60 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Origin Tool</title>
+    <style>
+        
+      </style>
 </head>
 <body>
-<div id="wizard-list">
-
-</div>
-<br>
-<div id="saved-origins-list">
-
-</div>
-<div id="form-container">
-    <form id="variant-form">
-        <input type="text" id="form-race" placeholder="Which Race"></input>
-        <br>
-        <h5>+2 to:</h5>
-        <select id="primary-ability">
-            <option value="str" name="str">Strength</option>
-            <option value="char" name="char">Charisma</option>
-            <option value="int" name="int">Intelligence</option>
-            <option value="wis" name="wis">Wisdom</option>
-            <option value="dex" name="dex">Dexterity</option>
-            <option value="con" name="con">Constitution</option>
-        </select>
-        <br>
-        <h5>(if applicable) +1 to:</h5>
-        <select id="secondary-ability">
-            <option value="str" name="str">Strength</option>
-            <option value="char" name="char">Charisma</option>
-            <option value="int" name="int">Intelligence</option>
-            <option value="wis" name="wis">Wisdom</option>
-            <option value="dex" name="dex">Dexterity</option>
-            <option value="con" name="con">Constitution</option>
-        </select>
-        <br>
-        <h5>(if applicable) -1 to:</h5>
-        <select id="ability-penalty">
-            <option value="str" name="str">Strength</option>
-            <option value="char" name="char">Charisma</option>
-            <option value="int" name="int">Intelligence</option>
-            <option value="wis" name="wis">Wisdom</option>
-            <option value="dex" name="dex">Dexterity</option>
-            <option value="con" name="con">Constitution</option>
-        </select>
-        <br>
-        <h5>Languges</h5>
-        <input type="text" id="languages" placeholder="A number of languages equal to your race's default">
-        <br>
-        <h5>Proficiencies</h5>
-        <input type="text" id="proficiencies" placeholder="Consult the proficiencies chart or wait for this app to update">
-        <br>
-        <button type="submit">Save Origin</button>
-        <button type="reset">Reset to Defaults</button>
-    </form>
-</div>
-
+    <div class="container">
+        <div class="header">
+            <img id="header-title" src="file:///C:/Users/owner/OneDrive/Documents/Living%20in%20Colorado%20Period/Programming/dnd%20Beyond%20Logo%20Vector%20Image%20Please%20Work.svg" alt="dnd-beyond-vector-logo"
+            width="300"
+            height="150"
+            />
+        </div>
+        <div id="wizard-list"></div>
+        <div class="content-large">
+                <img id="the-Book-Of-Races" src="file:///C:/Users/owner/OneDrive/Documents/Living%20in%20Colorado%20Period/Programming/dnd%20Tome.svg" alt="the-book-of-magical-race-essentialism"/>
+                    <!-- <div class="left-page">PPLACEHOLDER L</div>
+                    <div class="right-page">PPLACEHOLDER R</div> -->
+        </div>
+        <div id="saved-origins-list"></div>
+        <div id="form-container">
+            <form id="variant-form">
+                <input type="text" id="form-race" placeholder="Which Race"></input>
+                <br>
+                <h5>+2 to:</h5>
+                <select id="primary-ability">
+                    <option value="str" name="str">Strength</option>
+                    <option value="char" name="char">Charisma</option>
+                    <option value="int" name="int">Intelligence</option>
+                    <option value="wis" name="wis">Wisdom</option>
+                    <option value="dex" name="dex">Dexterity</option>
+                    <option value="con" name="con">Constitution</option>
+                </select>
+                <br>
+                <h5>(if applicable) +1 to:</h5>
+                <select id="secondary-ability">
+                    <option value="str" name="str">Strength</option>
+                    <option value="char" name="char">Charisma</option>
+                    <option value="int" name="int">Intelligence</option>
+                    <option value="wis" name="wis">Wisdom</option>
+                    <option value="dex" name="dex">Dexterity</option>
+                    <option value="con" name="con">Constitution</option>
+                </select>
+                <br>
+                <h5>(if applicable) -1 to:</h5>
+                <select id="ability-penalty">
+                    <option value="str" name="str">Strength</option>
+                    <option value="char" name="char">Charisma</option>
+                    <option value="int" name="int">Intelligence</option>
+                    <option value="wis" name="wis">Wisdom</option>
+                    <option value="dex" name="dex">Dexterity</option>
+                    <option value="con" name="con">Constitution</option>
+                </select>
+                <br>
+                <h5>Languges</h5>
+                <input type="text" id="languages" placeholder="A number of languages equal to your race's default">
+                <br>
+                <h5>Proficiencies</h5>
+                <input type="text" id="proficiencies" placeholder="Consult the proficiencies chart or wait for this app to update">
+                <br>
+                <button type="submit">Save Origin</button>
+                <button type="reset">Reset to Defaults</button>
+            </form>
+        </div>
+        <div class="footer">Footer</div>
+    </div>
+    <!-- <div class= "container2">
+        <div class="book"></div>
+    </div> -->
 <script src="src/index.js" defer></script>
+<link rel="stylesheet" href="styles/styles.css">
 </body>
 </html>

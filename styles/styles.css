@@ -1,1 +1,173 @@
-/* css goes here */
+@font-face {
+    font-family: eternalFont;
+    src: url("Eternal.ttf");
+}
+body {
+    margin: 0;
+    background-image: url("https://i.etsystatic.com/9752765/r/il/67ec60/2394972780/il_1588xN.2394972780_3etq.jpg")
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr 100px;
+    grid-gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+.container2 {
+    width: 100vw;
+    height: 100vh;
+
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr 100px;
+    grid-gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.container div {
+    padding: 10px;
+    border: 10px color#000000;
+}
+
+.header {
+    background-image: url("https://images.ctfassets.net/swt2dsco9mfe/6qxX9Cq1UX5XAlHStHZfrh/a819f5574df9bb834c152a3f9e67e632/social-1640x680-jam-3.jpg?q=70&fit=thumb&w=1640&h=680&fm=avif");
+    grid-row-start: 1;
+    grid-row-end: span 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-family:eternalFont;
+}
+
+
+#wizard-list {
+    background-image: url("https://lh3.googleusercontent.com/pw/ADCreHeN4cO4Hc5c98h6VVxUPMs2FrUEDOKF2WYw5U1a9DYhsWgSOIQfEggUKtxVHlphFcHlC8hOkwDIzxROJuFJOhUf8vXdGSCei0f9YPO8CGguydMxkOc=w2400");
+    grid-row-start: 2;
+    grid-row-end:span 1;
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    border: 10px solid tan;
+    padding: 10px;
+    font-family: eternalFont;
+    color: rgb(159, 4, 4);
+}
+
+h1{
+    font-family: eternalFont;
+}
+
+.content-large {
+    background-image: url("https://cdn.openart.ai/stable_diffusion/b012323c5ffa3fd5cad34cff7c9d929e106675c6_2000x2000.webp");
+    background-size:cover;
+    grid-row-start:2;
+    grid-row-end:span 1;
+    grid-column-start: 2;
+    grid-column-end: span 2;
+    border: 10px solid tan;
+    padding: 10px;
+    font-family: eternalFont;
+    color: rgb(159, 4, 4);
+    display: grid;
+
+    /* grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 1px;
+    padding: 1px;
+    box-sizing: border-box; */
+    
+}
+
+#saved-origins-list {
+    background-image: url("https://lh3.googleusercontent.com/pw/ADCreHeF_eufmr-uHucNkpgZszeMXU742z5olzSANPt92Ahfx9Yaar7PyIcuKaNjOAYlgba3T4lkwjKMiJPvNpzUdlLmoQDF3NyCNnip75frW9r7XCOHayY=w2400");
+    grid-row-start:3;
+    grid-row-end: span 1;
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    border: 10px solid tan;
+    padding: 10px;
+    font-family: eternalFont;
+    color: rgb(159, 4, 4);
+}
+
+#form-container {
+    background-image: url("https://lh3.googleusercontent.com/pw/ADCreHfCcz7BlAuvWbUuWSsKSBCKq49jOdm52hVadrrKhkETUI3bioefchA9f2ni8USgdfx-unLa5qwUTJQoOKrKnk5ikrKWSzJK7WQoZwK9ICi76JAHem0=w2400");
+    grid-row-start:3;
+    grid-row-end:span 1;
+    grid-column-start: 2;
+    grid-column-end: span 2;
+    border: 10px solid tan;
+    padding: 10px;
+    font-family: eternalFont;
+    color: rgb(159, 4, 4);
+}
+
+.footer {
+    background-image: url("https://images.ctfassets.net/swt2dsco9mfe/5vgSeoL9NqK0oaPtzHF8xA/f879a38024c08b341d6ca4869bd0152b/social-1640x680-jam-1.jpg?q=70&fit=thumb&w=1640&h=680&fm=avif");
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-family: eternalFont;
+    color: rgb(159, 4, 4);
+}
+
+#header-title {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+#the-Book-Of-Races{
+    display: block;
+    margin: auto;
+    width: 43.75rem;
+    height: 43.75rem;
+    overflow: scroll;
+
+
+}
+
+/* .left-page{
+    grid-row-start:1;
+    grid-row-end:span 1;
+    grid-column-start:1;
+    grid-column-end:span 1;
+    background-color: rgba(0, 0, 255, 0.441);
+}
+
+.right-page{
+    grid-row-start:1;
+    grid-row-end:span 1;
+    grid-column-start:2;
+    grid-column-end:span 1;
+    background-color:rgba(255, 255, 0, 0.356)
+} */
+
+/* .book {
+    background-color:rgba(0, 0, 255, 0.326);
+    grid-row-start:1;
+    grid-row-end:span 1;
+    grid-column-start: 2;
+    grid-column-end: span 2;
+    z-index: 2;
+    border: 10px solid tan;
+    padding: 10px;
+    font-family: eternalFont;
+    color: rgb(159, 4, 4);
+} */
