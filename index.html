@@ -22,8 +22,8 @@
         <br>
 
         <h5>+2 to:</h5>
-        <select id="primary-ability">
-            <option default disabled selected value> -- select an option -- </option>
+        <select name="primary-ability" id="primary-ability">
+            <option disabled value=""> -- select an option -- </option>
             <option value="str" name="str">STR</option>
             <option value="cha" name="cha">CHA</option>
             <option value="int" name="int">INT</option>
@@ -36,9 +36,9 @@
         <br>
         <div id="optional-ability" hidden="true">
         <h5>+1 to:</h5>
-        <select id="secondary-ability">
+        <select name="secondary-ability" id="secondary-ability">
             
-            <option default disabled selected value> -- select an option -- </option>
+            <option disabled selected value="null"> -- select an option -- </option>
             <option value="str" name="str">STR</option>
             <option value="cha" name="cha">CHA</option>
             <option value="int" name="int">INT</option>
@@ -52,9 +52,9 @@
         <br>
         <div id="half-elf-ability" hidden="true">
             <h5>+1 to:</h5>
-            <select id="tertiary-ability">
+            <select name="tertiary-ability" id="tertiary-ability">
                 
-                <option default disabled selected value> -- select an option -- </option>
+                <option disabled selected value="null"> -- select an option -- </option>
                 <option value="str" name="str">STR</option>
                 <option value="cha" name="cha">CHA</option>
                 <option value="int" name="int">INT</option>
@@ -69,8 +69,8 @@
 
         </select>
         <br>
-        <h5>Languages</h5>
         <table id="languages">
+            <h5>Languages</h5>
         </table>
         <br>
         <div id="optional-profs" hidden="true">
@@ -117,10 +117,8 @@
         </div>
         <br>
         <button type="submit">Save Origin</button>
-        <button type="reset">Reset to Defaults</button>
-
-        <button type="btn">Delete Custom Origin</button>
     </form>
+    <button id="delete-button" type="btn">Delete Custom Origin</button>
 </div>
 
 <script src="src/index.js" defer></script>
