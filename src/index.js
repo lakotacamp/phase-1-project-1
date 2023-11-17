@@ -49,29 +49,33 @@ document.addEventListener('DOMContentLoaded', () => {
             // img2.src = "file:///C:/Users/owner/OneDrive/Documents/Living%20in%20Colorado%20Period/Programming/dnd%20Tome.svg"
             // document.querySelector("#book-open").append(img2)
 
-            if (races.name === "Dragonborn") {
-            img.src = "https://www.dndbeyond.com/avatars/thumbnails/6/340/420/618/636272677995471928.png"
-            } else if (races.name === "Dwarf") {
-                img.src = "https://www.dndbeyond.com/avatars/thumbnails/6/254/420/618/636271781394265550.png"
-            }  else if (races.name === "Elf") {
-                img.src = "https://www.dndbeyond.com/avatars/thumbnails/7/639/420/618/636287075350739045.png"
-            }  else if (races.name === "Half-Orc") {
-                img.src = "https://www.dndbeyond.com/avatars/thumbnails/6/466/420/618/636274570630462055.png"
-            }  else if (races.name === "Half-Elf") {
-                img.src = "https://www.dndbeyond.com/avatars/thumbnails/6/481/420/618/636274618102950794.png"
-            }  else if (races.name === "Gnome") {
-                img.src = "https://www.dndbeyond.com/avatars/thumbnails/6/334/420/618/636272671553055253.png"
-            }  else if (races.name === "Halfling") {
-                img.src = "https://www.dndbeyond.com/avatars/thumbnails/6/256/420/618/636271789409776659.png"
-            }  else if (races.name === "Human") {
-                img.src = "https://www.dndbeyond.com/avatars/thumbnails/6/258/420/618/636271801914013762.png"
-            }  else if (races.name === "Tiefling") {
-                img.src = "https://www.dndbeyond.com/avatars/thumbnails/7/641/420/618/636287076637981942.png"
-            }                 
+            img.src = imageFunction(races.name)             
         });
         defaultRace = races
         raceDetails(races)
     };
+
+    function imageFunction(name){
+        if (name === "Dragonborn") {
+            return "https://www.dndbeyond.com/avatars/thumbnails/6/340/420/618/636272677995471928.png"
+            } else if (name === "Dwarf") {
+                return  "https://www.dndbeyond.com/avatars/thumbnails/6/254/420/618/636271781394265550.png"
+            }  else if (name === "Elf") {
+                return  "https://www.dndbeyond.com/avatars/thumbnails/7/639/420/618/636287075350739045.png"
+            }  else if (name === "Half-Orc") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/466/420/618/636274570630462055.png"
+            }  else if (name === "Half-Elf") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/481/420/618/636274618102950794.png"
+            }  else if (name === "Gnome") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/334/420/618/636272671553055253.png"
+            }  else if (name === "Halfling") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/256/420/618/636271789409776659.png"
+            }  else if (name === "Human") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/258/420/618/636271801914013762.png"
+            }  else if (name === "Tiefling") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/7/641/420/618/636287076637981942.png"
+            }  
+    }
 
 //    function raceImage(races){
 //     const bookimg = document.querySelector("#left-page-info")
@@ -92,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
      
         race.starting_proficiencies.forEach((prof)=>{
              profsString = `${profsString}` + " " + `${prof.name}`
-             console.log(profsString)
         })
      
         bookProfs.textContent = profsString
@@ -367,6 +370,8 @@ function customMenu() {
 
                 newUserOrigin.addEventListener('click', () => {
                     raceDetails(race)
+                    raceBook(race)
+                    img.src = imageFunction(`${race.index.charAt(0).toUpperCase()}` + `${race.index.slice(1)}`) 
                 })
             })
             current = data[data.length-1]
@@ -378,7 +383,7 @@ function customMenu() {
 function showConfirmation(message, color) {
     const confirmation = document.getElementById("button-feedback")
     confirmation.textContent = `${message}`
-    confirmation.style = `background-color : ${color}`
+    confirmation.style = `text-align: center; background-color : ${color}`
     confirmation.hidden = false
     setTimeout(() => {
         confirmation.hidden = true
