@@ -123,6 +123,43 @@
         }
       ],
       "url": "/api/races/dwarf"
+    },
+    {
+      "index": "gnome",
+      "name": "Gnome",
+      "ability_bonuses": [
+        {
+          "ability_score": {
+            "index": "int",
+            "name": "INT"
+          },
+          "bonus": 2
+        },
+        {
+          "ability_score": {
+            "index": "cha",
+            "name": "CHA"
+          },
+          "bonus": 1
+        }
+      ],
+      "languages": [
+        {
+          "index": "common",
+          "name": "Common"
+        },
+        {
+          "index": "gnomish",
+          "name": "Gnomish"
+        }
+      ],
+      "starting_proficiencies": [
+        {
+          "index": "thingy",
+          "name": "Thingy"
+        }
+      ],
+      "id": 2
     }
   ]
 }
