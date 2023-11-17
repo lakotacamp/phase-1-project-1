@@ -119,3 +119,32 @@ function showConfirmation(message, color){
 
 initialize()
 
+function raceBook(race){
+   const bookLangs = document.querySelector("#book-langs")
+   const bookProfs = document.querySelector("#book-profs")
+   const bookName = document.querySelector("#book-name")
+   const bookAbilities = document.querySelector("book-abilities")
+   let profsString = ""
+   let langString = ""
+   let abilityString = ""
+   bookName.textContent = `${race.name}`
+
+   race.starting_proficiencies.forEach((prof)=>{
+        profsString = profsString + " " + `${prof.name}`
+   })
+
+   bookProfs.textContent = profsString
+
+   race.languages.forEach((language)=>{
+    langString = langString + " " + `${language.name}`
+   })
+
+   bookLangs.textContent = langString
+
+   race.ability_bonuses.forEach((abi)=>{
+    abilityString = abilityString + " " + `${abi.ability_score.name} ` + `+${abi.bonus}` 
+   })
+   
+   bookAbilities.textContent = abilityString
+
+}
