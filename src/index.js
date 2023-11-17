@@ -8,14 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //calls the function which populates the custom user origins
     customMenu()
 
-    //grabs the customization form and adds a listener that accepts user-submitted values
-    const variantForm = document.getElementById("variant-form")
-    variantForm.addEventListener("submit", (e) => {
-        e.preventDefault()
-        
-        addOrigin(e)
-    })
-
     const deleteButton = document.querySelector("#delete-button")
     deleteButton.addEventListener("click", (e)=>{
         removeCustomOrigin(current)
@@ -50,14 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let url = race.url
 
 
-
-})
-//code goes here
-const variantForm = document.getElementById("variant-form")
-variantForm.addEventListener("submit", (e)=>{
-    e.preventDefault()
-    addOrigin(e)
-})
 
         fetch(`https://www.dnd5eapi.co${url}`)
             .then(r => r.json())
