@@ -4,9 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let current
     let totalLangs = 0
     let totalProfs = 0
-
+    let img = new Image
+    // let img2 = new Image
     //calls the function which populates the custom user origins
     customMenu()
+
+    //grabs the customization form and adds a listener that accepts user-submitted values
+    const variantForm = document.getElementById("variant-form")
+    variantForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        
+        addOrigin(e)
+    })
 
     const deleteButton = document.querySelector("#delete-button")
     deleteButton.addEventListener("click", (e)=>{
@@ -14,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-
+    // img.src = "https://static.wikia.nocookie.net/criticalrole/images/7/73/Dragonborn.png/revision/latest?cb=20220407031423"
+    document.querySelector("#left-page-info").appendChild(img)
     //This is our Get Request from the API
     fetch("https://www.dnd5eapi.co/api/races")
         .then(r => r.json())
@@ -24,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 raceFiller(races)
             })
         })
+    
     //Races: This function will create our Menu Bar
     function raceMenu(races) {
         let dndRace = document.createElement('h1');
@@ -32,10 +43,78 @@ document.addEventListener('DOMContentLoaded', () => {
         //This add event listener function will make the menu bar interactive. When the user clicks on a Race in the menu Bar it will present the race info from the raceDetails function
         dndRace.addEventListener('click', () => {
             raceDetails(races)
+            raceBook(races)
+
+            // let img2 = document.createElement('img')
+            // img2.src = "file:///C:/Users/owner/OneDrive/Documents/Living%20in%20Colorado%20Period/Programming/dnd%20Tome.svg"
+            // document.querySelector("#book-open").append(img2)
+
+            img.src = imageFunction(races.name)             
         });
         defaultRace = races
         raceDetails(races)
     };
+
+    function imageFunction(name){
+        if (name === "Dragonborn") {
+            return "https://www.dndbeyond.com/avatars/thumbnails/6/340/420/618/636272677995471928.png"
+            } else if (name === "Dwarf") {
+                return  "https://www.dndbeyond.com/avatars/thumbnails/6/254/420/618/636271781394265550.png"
+            }  else if (name === "Elf") {
+                return  "https://www.dndbeyond.com/avatars/thumbnails/7/639/420/618/636287075350739045.png"
+            }  else if (name === "Half-Orc") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/466/420/618/636274570630462055.png"
+            }  else if (name === "Half-Elf") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/481/420/618/636274618102950794.png"
+            }  else if (name === "Gnome") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/334/420/618/636272671553055253.png"
+            }  else if (name === "Halfling") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/256/420/618/636271789409776659.png"
+            }  else if (name === "Human") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/6/258/420/618/636271801914013762.png"
+            }  else if (name === "Tiefling") {
+                return "https://www.dndbeyond.com/avatars/thumbnails/7/641/420/618/636287076637981942.png"
+            }  
+    }
+
+//    function raceImage(races){
+//     const bookimg = document.querySelector("#left-page-info")
+//     const imgtitle = document.querySelector("#left-page")
+//     bookimg.src = "https://static.wikia.nocookie.net/criticalrole/images/7/73/Dragonborn.png/revision/latest?cb=20220407031423"
+//     imgtitle.textContent = races.name
+//    }
+   
+    function raceBook(race){
+        const bookLangs = document.querySelector("#book-langs")
+        const bookProfs = document.querySelector("#book-profs")
+        const bookName = document.querySelector("#book-name")
+        const bookAbilities = document.querySelector("#book-abilities")
+        let profsString = "proficiencies: "
+        let langString = ""
+        let abilityString = " "
+        bookName.textContent = `${race.name}`
+     
+        race.starting_proficiencies.forEach((prof)=>{
+             profsString = `${profsString}` + " " + `${prof.name}`
+        })
+     
+        bookProfs.textContent = profsString
+     
+        race.languages.forEach((language)=>{
+         langString = langString + " " + `${language.name}`
+        })
+     
+        bookLangs.textContent = langString
+     
+        race.ability_bonuses.forEach((abi)=>{
+         abilityString = abilityString + " " + `${abi.ability_score.name} ` + `+${abi.bonus}` 
+        })
+        
+        bookAbilities.textContent = abilityString
+
+
+     
+     }
     //Iterates Race Data: .forEach that iterates through the data in each race object in the array "races"
     //uses the route contained in the "race" object to get the relevant data from the api
     function raceFiller(race) {
@@ -73,9 +152,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-
     //Information: This function will present info on each race in the Menu Bar
     function raceDetails(raceInQuestion) {
+    //    const proficienciesArray = []
+    //    const bookProfs =document.createElement("P")
+    //    const rightPage = document.querySelector("#right-page")
+    //    rightPage.innerhtml = ""
+
+    //    const bookLanguages =document.createElement("P")
+    //    let languageString = ``
+    
+
         current = raceInQuestion
         const raceName = document.querySelector("#form-race")
         let primaryAbilityField = document.querySelector('#primary-ability');
@@ -90,11 +177,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const primaryAbility = raceInQuestion.ability_bonuses[0].ability_score.index
         totalProfs = 0
         //confirms that racial proficiencies exist before populating that section of the form
+        // let abilityString = `${primaryAbility}`
+        // const bookAbilities =document.createElement("P")
+        // const bookNames = document.createElement("h3")
+        // bookNames.textContent = `${raceInQuestion.name}`
+        
         if (raceInQuestion.starting_proficiencies[0]) {
             raceInQuestion.starting_proficiencies.forEach((proficiency) => {
                 const newChoice = document.createElement("tr")
                 const defaultProf = document.createElement("td")
                 const choiceSelect = document.createElement("td")
+                // proficienciesArray.push(proficiency)
 
                 defaultProf.innerHTML = `${proficiency.name}`
 
@@ -111,9 +204,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             optionalProfs.hidden = true
         }
-
+            // bookProfs.textContent= proficienciesArray
+            // rightPage.append(bookProfs)
         //confirms that the race has a secondary (or teritiary) ability bonus before populating the form with it
         if (raceInQuestion.ability_bonuses[1]) {
+            // abilityString = abilityString + " " + raceInQuestion.ability_bonuses[1].ability_score.index
             secondaryAbilityField.value = raceInQuestion.ability_bonuses[1].ability_score.index
             secondaryAbilityField.options[`${raceInQuestion.ability_bonuses[1].ability_score.index}`].innerText = raceInQuestion.ability_bonuses[1].ability_score.index.toUpperCase()
             optionalAbility.hidden = false
@@ -131,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // to customize the language, setting the initial values to the racial defaults
         totalLangs = 0
         raceInQuestion.languages.forEach((language) => {
+            // languageString = languageString + " " + `${language}`
             const newRow = document.createElement("tr")
             const newLanguage = document.createElement("td")
             
@@ -168,6 +264,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         primaryAbilityField.value = primaryAbility
         primaryAbilityField.options[`${primaryAbility}`].innerText = primaryAbility.toUpperCase()
+
+        // bookLanguages.textContent = languageString
+        // bookAbilities.textContent = abilityString
+        // const bookRace = document.createElement("P")
+        // bookRace.textContent = `${raceInQuestion.name}`
+        // rightPage.append(bookRace)
+        // rightPage.append(bookProfs)
+        // rightPage.append(bookAbilities)
+        // rightPage.append(bookLanguages)
     }
 
 
@@ -265,6 +370,8 @@ function customMenu() {
 
                 newUserOrigin.addEventListener('click', () => {
                     raceDetails(race)
+                    raceBook(race)
+                    img.src = imageFunction(`${race.index.charAt(0).toUpperCase()}` + `${race.index.slice(1)}`) 
                 })
             })
             current = data[data.length-1]
@@ -276,7 +383,7 @@ function customMenu() {
 function showConfirmation(message, color) {
     const confirmation = document.getElementById("button-feedback")
     confirmation.textContent = `${message}`
-    confirmation.style = `background-color : ${color}`
+    confirmation.style = `text-align: center; background-color : ${color}`
     confirmation.hidden = false
     setTimeout(() => {
         confirmation.hidden = true
@@ -304,3 +411,4 @@ function removeCustomOrigin(current){
 
 
 })
+
